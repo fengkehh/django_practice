@@ -1,0 +1,48 @@
+# Basic Commands
+
+**To Create Initial Project File Structure:**
+
+    django-admin startproject mysite
+
+**To Create Database Tables in Initial Applications:**
+
+    cd mysite
+    python manage.py migrate
+
+**To Start Development Server:**
+
+    python manage.py runserver
+    
+Then go to http://127.0.0.1:8000/
+
+**To Create a (blog) Application:**
+
+    python manage.py startapp blog
+    
+**Activating Application:**
+
+Go to `settings.py` and add the application to `INSTALLED_APPS`. For example:
+
+    INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog', #<-- new app
+    )
+
+Then migrate the database for the changed list of installed applications. 
+
+First create a migration for the new application model:
+
+    python manage.py makemigrations blog
+    
+Then migrate again:
+    
+    python manage.py migrate
+    
+**To Create Superuser/Admin:**
+
+    python manage.py createsuperuser
